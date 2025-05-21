@@ -1269,7 +1269,16 @@ section h2::after {
     display: inline-block !important;
     margin: 0 auto !important;
   }
+  /* ─── MOBILE ONLY: bring back pop-out chat button beneath chat ───────────────── */
+@media (max-width: 768px) {
+  /* Undo any hiding of the pop-out button */
+  #popOutBtn,
+  .chat-actions .popout-btn {
+    display: inline-block !important;
+    margin: 0.5rem auto !important;
+  }
 }
+
 
 
 
