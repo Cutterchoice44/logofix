@@ -622,3 +622,19 @@ section h2::after {
   aspect-ratio: 1 / 1 !important;
   max-height: none !important;
 }
+/* ─── Static teal bar under the schedule heading ───────────────────────────────── */
+
+.schedule-heading {
+  position: relative;        /* allow us to position the pseudo-element below */
+  padding-bottom: 0.75rem;   /* room for the bar */
+}
+
+.schedule-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;                 /* sit flush under the text */
+  width: 100%;
+  height: 4px;               /* thickness of the bar */
+  background: var(--brand-teal);
+}
