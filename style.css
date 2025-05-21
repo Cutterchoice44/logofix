@@ -614,7 +614,7 @@ section h2::after {
 
 /* 2) Put the player-container back to 1000px max-width (instead of 600px) */
 .live-player .player-container {
-  max-width: 1000px !important;
+  max-width: 800px !important;
 }
 
 /* 3) Force the square “inlinePlayer” iframe to keep a 1:1 aspect ratio */
