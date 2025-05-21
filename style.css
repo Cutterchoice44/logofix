@@ -43,7 +43,7 @@ html, body {
 .header-gif-right {
   position: absolute;
   top: 0;
-  left: 50%; /* Start fully off-screen right */
+  left: 50%;
   height: var(--gif-height);
   width: var(--gif-width);
   opacity: var(--gif-opacity);
@@ -57,7 +57,7 @@ html, body {
 .header-gif-left {
   position: absolute;
   top: 0;
-  right: 50%; /* Start fully off-screen left */
+  right: 50%;
   height: var(--gif-height);
   width: var(--gif-width);
   opacity: var(--gif-opacity);
@@ -69,28 +69,19 @@ html, body {
 
 /* ─── ANIMATIONS ───────────────────────────────────────────────────────────── */
 @keyframes slideRightToLeft {
-  0% {
-    transform: translateX(100vw);
-  }
-  100% {
-    transform: translateX(-100vw);
-  }
+  0%   { transform: translateX(100vw); }
+  100% { transform: translateX(-100vw); }
 }
-
 @keyframes slideLeftToRight {
-  0% {
-    transform: translateX(-100vw);
-  }
-  100% {
-    transform: translateX(100vw);
-  }
+  0%   { transform: translateX(-100vw); }
+  100% { transform: translateX(100vw); }
 }
 
 header::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.4); /* Optional dark overlay */
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
 
@@ -120,7 +111,7 @@ header .title h1 {
 header .title .tagline {
   font-size: 1.2rem;
   color: var(--brand-teal);
-  margin-top: 0rem;
+  margin-top: 0;
 }
 
 /* ─── GRID LAYOUT ─────────────────────────────────────────────────────────── */
@@ -144,16 +135,14 @@ header .title .tagline {
 /* ─── HEADER TITLE ───────────────────────────────────────── */
 header .title h1 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2rem;  /* keep your existing sizing */
+  font-size: 2rem;
   margin: 0;
 }
 
 @media (min-width: 900px) {
   header .title h1 {
-    /* desktop size */
     font-size: 8rem;
   }
-  
   header .title .tagline {
     font-size: 2.45rem;
   }
@@ -166,9 +155,8 @@ header .title h1 {
   #now-art {
     max-width: 600px;
   }
-  /* Desktop override: further boost if needed */
   header .logo {
-    height: 180px !important;  /* keep 50% larger */
+    height: 180px !important;
   }
 }
 
@@ -181,7 +169,7 @@ section {
 }
 
 section h2 {
-  margin-bottom: 1.rem;
+  margin-bottom: 1rem;
   color: var(--brand-teal);
   text-align: center;
 }
@@ -215,7 +203,7 @@ section h2 {
 
 .player-container {
   max-width: 1000px;
-  margin: 0rem auto;
+  margin: 0 auto;
 }
 
 #now-archive {
@@ -264,54 +252,6 @@ section h2 {
   padding: 0.5rem 0;
   font-size: 1.5rem;
   border-bottom: 1px solid var(--brand-teal);
-}
-
-#schedule-container h3 {
-  margin-top: 2rem;
-  border-bottom: 1px solid var(--brand-teal);
-  padding-bottom: 0.5rem;
-  font-size: 1.6rem;
-}
-
-#schedule-container ul {
-  list-style: none;
-  padding: 0;
-}
-
-#schedule-container li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  margin-bottom: 1rem;
-}
-
-#schedule-container li strong {
-  min-width: 80px;
-  font-weight: bold;
-}
-
-#schedule-container li img {
-  width: 30px;
-  height: 30px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-#schedule-container li span,
-#schedule-container li a {
-  font-size: 1.2rem;
-}
-
-#schedule-container li a {
-  margin-left: auto;
-  background: var(--brand-teal);
-  color: #000;
-  padding: 2px 6px;
-  border-radius: 4px;
-  text-decoration: none;
 }
 
 /* MIXCLOUD EMBEDS */
@@ -406,64 +346,39 @@ section h2 {
     height: 220px !important;
     max-height: 40vh;
   }
-  /* Layout */
   header {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
-
   header .logo {
     max-width: 180px;
     margin-bottom: 0.5rem;
   }
-
   header .title h1 {
     font-size: 1.8rem;
     line-height: 1.2;
   }
-
   header .title .tagline {
     font-size: 1rem;
   }
-
   .grid-container {
     display: flex;
     flex-direction: column;
     padding: 0 0.5rem;
   }
-
   .live-player    { order: 1; }
   .chat           { order: 2; }
   .schedule       { order: 3; }
   .mixcloud       { order: 4; display: none !important; }
-
-  /* Chat & Player sizing */
-live-player iframe,
-  .live-player audio {
-    height: 320px !important;    /* bumped from 110px so cover art is visible */
-    max-height: 60vh    !important;
-  }
-}
-
-/* MOBILE FIXES */
-.chat-btn-mobile {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  /* 1. Hide the second logo on mobile */
-  header .logo-container:nth-of-type(3) {
-    display: none !important;
-  }
-  /* 2. Hide the redundant archive title under player */
-  #now-archive {
-    display: none !important;
-  }
-  /* 3. Show the Chat popout button on mobile */
+  .chat iframe    { height: 320px !important; max-height: 60vh !important; }
+  #popOutBtn { display: none !important; }
   .chat-btn-mobile {
     display: inline-block !important;
     margin: 0.5rem auto;
+  }
+  header .logo-container:last-of-type {
+    display: none !important;
   }
 }
 
@@ -488,7 +403,6 @@ live-player iframe,
     border: none; padding: 0.5rem; border-radius: 4px;
     font-size: 1rem; cursor: pointer; z-index: 10000;
   }
-  /* Hide default chat pop-out button */
   .chat .popout-btn { display: none !important; }
 }
 
@@ -542,12 +456,9 @@ live-player iframe,
 
 /* MOBILE: hide second logo and pop-out player */
 @media (max-width: 768px) {
-  /* 1. Hide the second logo on mobile */
   header .logo-container:last-of-type {
     display: none !important;
   }
-
-  /* 2. Hide the “Pop Out Player” button on mobile */
   #popOutBtn {
     display: none !important;
   }
@@ -560,16 +471,14 @@ section {
   border-radius: 6px;
   padding: 0.5rem;
 }
-
 @media (min-width: 769px) {
   .live-player iframe,
   .live-player audio {
     height: 750px !important;
-    max-height: 150vh; /* optional: let it grow with the viewport */
+    max-height: 150vh;
   }
 }
 
-/* DESKTOP: truly blow out the slideshow */
 /* ─── SLIDESHOW: real desktop sizing ───────────────────────────────────────── */
 @media (min-width: 769px) {
   #slideshow {
@@ -578,9 +487,8 @@ section {
     max-width: none   !important;
     transform: none   !important;
     height: 750px     !important;
-    max-height: 120vh  !important;
+    max-height: 120vh !important;
   }
-  /* <— change this: */
   #slideshow > * {
     height: 120%     !important;
   }
@@ -599,69 +507,79 @@ section {
   margin-top: 0.5rem !important;
 }
 
-/* ———————————————— Teal Line Animation ———————————————— */
-/* 1. Place this block at the very bottom of your style.css */
-
-/* initial state: zero width */
+/* ————————— Teal Line Animation ————————————————————————————————————————— */
 .teal-line {
   width: 0;
-  height: 4px; /* thickness of the line */
+  height: 4px;
   background: var(--brand-teal);
-  margin: 0 auto;      /* center under header */
+  margin: 0 auto;
   animation: drawLine 2s ease-out forwards;
-  /* optional delay if you want to wait for header fonts to load */
-  /* animation-delay: 0.3s; */
 }
-
 @keyframes drawLine {
-  to {
-    width: 100%;       /* full width of the container */
-  }
+  to { width: 100%; }
 }
-
-/* —————— Reverse Teal Line under Section Titles —————— */
 section h2 {
-  position: relative;  /* enable absolute positioning on ::after */
-  padding-bottom: 0.6rem;   /* make room for the line */
+  position: relative;
+  padding-bottom: 0.6rem;
 }
-
 section h2::after {
   content: '';
   position: absolute;
-  bottom: 0;          /* right under the text */
-  right: 0;           /* start at the far right */
-  width: 0;           /* initial width */
-  height: 4px;        /* thickness of the line */
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 4px;
   background: var(--brand-teal);
   animation: drawLineReverse 2s ease-out forwards;
 }
-
 @keyframes drawLineReverse {
-  to {
-    width: 100%;      /* grow to full width from the right */
+  to { width: 100%; }
+}
+
+/* ─── Compact Archive Player ───────────────────────────────────────────────── */
+.live-player .player-container {
+  max-width: 600px !important;
+}
+.live-player { padding: 0.15rem !important; }
+.live-player iframe,
+.live-player audio { margin: 0 auto !important; }
+
+/* ─── MIXCLOUD DELETE LINK STYLES ─────────────────────────────────────────── */
+.mixcloud-item { position: relative; }
+.remove-link {
+  display: block;
+  text-align: right;
+  font-size: 0.9rem;
+  color: var(--brand-teal);
+  text-decoration: underline;
+  margin-top: 0.3rem;
+  cursor: pointer;
+}
+.remove-link:hover {
+  color: #5A8785;
+  text-decoration: #5A8785;
+}
+
+/* ─── RESPONSIVE GIF SIZING ───────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  :root {
+    --gif-height: 200px;
+    --gif-width: 16%;
   }
 }
-
-/* —————— Restore Teal Border on Slideshow —————— */
-#slideshow {
-  border: 8px solid var(--brand-teal) !important;
-  box-sizing: border-box;  /* ensure the border is included in the element’s size */
+@media (max-width: 768px) {
+  :root {
+    --gif-height: 150px;
+    --gif-width: 20%;
+  }
 }
-
-/* ─── Compact Archive Player ─────────────────────────────────────────────── */
-
-/* 1) Shrink the outer wrapper so it never grows wider than 600px */
-.live-player .player-container {
-  max-width: 600px !important;   /* was 1000px */
+@media (max-width: 480px) {
+  :root {
+    --gif-height: 120px;
+    --gif-width: 30%;
+  }
 }
-
-/* 2) Cut down the padding around the iframe */
-.live-player {
-  padding: 0.15rem !important;   /* was 0.5rem */
-}
-
-/* 3) Remove the bottom margin on the player itself */
-.live-player iframe,
-.live-player audio {
-  margin: 0 auto !important;     /* was 0 auto 1rem */
+/* ─── HIDE EXTRA CHAT POP-OUT UNDER LIVE PLAYER ───────────────────────────── */
+#chatPopupBtn {
+  display: none !important;
 }
