@@ -11,9 +11,13 @@ const FALLBACK_ART      = "/images/archives-logo.jpeg";
 const MIXCLOUD_PASSWORD = "cutters44";
 const isMobile          = /Mobi|Android/i.test(navigator.userAgent);
 
-let chatPopupWindow;  // for desktop pop-out
-let visitorId;        // for ban logic
+let chatPopupWindow;  
+let visitorId;        
 
+// ADMIN-MODE TOGGLE (show remove links when URL has “#admin”)
+if (window.location.hash === "#admin") {
+  document.body.classList.add("admin-mode");
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 2) BAN LOGIC (FingerprintJS v3+)
