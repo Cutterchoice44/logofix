@@ -1254,43 +1254,38 @@ section h2::after {
 }
 /* ─── MOBILE BANNER + NAV TWEAKS ─────────────────────────────────────────── */
 @media (max-width: 768px) {
-  /* 1) Shrink the header/banner so it never covers your logo */
+  /* 1) Shrink header/banner */
   header,
   .site-header,
-  .banner { 
-    height: auto !important;      /* let it size to its contents */
-    padding: 0.5rem 1rem;          /* less top/bottom padding */
+  .banner {
+    height: auto !important;
+    padding: 0.5rem 1rem !important;
   }
 
-  /* make sure your logo doesn’t overflow */
+  /* 2) Tame the logo */
   .site-logo,
   header .logo img {
     max-height: 60px !important;
     width: auto !important;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem !important;
   }
 
-  /* 2) Reduce nav-link font size + spacing */
-  #main-nav a {
-    font-size: 1rem !important;
-    margin: 0 0.3rem !important;
-  }
-
-  /* 3) Hide every link that isn’t “Our DJs” */
-  #main-nav a:not([href*="djs"]) {
-    display: none !important;
-  }
-
-  /* 4) Show & center the “Our DJs” link */
-  #main-nav a[href*="djs"] {
-    display: inline-block !important;
-    margin: 0 auto !important;
-  }
-
-  /* ensure the nav container is centered under the banner */
+  /* 3) Center the nav container */
   #main-nav {
     display: flex !important;
     justify-content: center !important;
   }
+
+  /* 4) Hide all links… */
+  #main-nav a {
+    display: none !important;
+  }
+
+  /* …then show & center only the “Our DJs” link */
+  #main-nav a[href*="djs"] {
+    display: inline-block !important;
+    margin: 0 auto !important;
+  }
 }
+
 
