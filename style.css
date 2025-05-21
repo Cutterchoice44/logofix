@@ -244,7 +244,9 @@ section h2 {
   overflow-y: auto;
 
   /* Option A: scale all text inside the schedule */
-  font-size: 1.1rem;        /* ← change this to e.g. 0.9rem or 1.1rem */
+  font-size: 1.1rem;
+   line-height: 1.4;      /* optional, to give a bit more breathing room */
+}/* ← change this to e.g. 0.9rem or 1.1rem */
 }
 
 .schedule-heading {
@@ -612,7 +614,7 @@ section h2::after {
 
 /* 2) Put the player-container back to 1000px max-width (instead of 600px) */
 .live-player .player-container {
-  max-width: 800px !important;
+  max-width: 1000px !important;
 }
 
 /* 3) Force the square “inlinePlayer” iframe to keep a 1:1 aspect ratio */
@@ -621,20 +623,4 @@ section h2::after {
   height: auto !important;
   aspect-ratio: 1 / 1 !important;
   max-height: none !important;
-}
-/* ─── Static teal bar under the schedule heading ───────────────────────────────── */
-
-.schedule-heading {
-  position: relative;        /* allow us to position the pseudo-element below */
-  padding-bottom: 0.75rem;   /* room for the bar */
-}
-
-.schedule-heading::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;                 /* sit flush under the text */
-  width: 100%;
-  height: 4px;               /* thickness of the bar */
-  background: var(--brand-teal);
 }
