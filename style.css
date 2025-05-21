@@ -560,6 +560,15 @@ section h2::after {
   text-decoration: #5A8785;
 }
 
+/* ─── ADMIN-MODE REMOVE LINK CONTROL ───────────────────────────────────── */
+.remove-link {
+  display: none !important;
+}
+.admin-mode .remove-link {
+  display: inline-block !important;
+  /* tweak padding/font-size here if needed */
+}
+
 /* ─── RESPONSIVE GIF SIZING ───────────────────────────────────────────────── */
 @media (max-width: 1200px) {
   :root {
