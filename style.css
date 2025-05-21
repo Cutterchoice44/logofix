@@ -1254,15 +1254,20 @@ section h2::after {
 }
 /* ─── MOBILE BANNER + NAV TWEAKS ─────────────────────────────────────────── */
 @media (max-width: 768px) {
-  /* 1) Shrink header/banner */
-  header,
-  .site-header,
-  .banner {
+  /* ─── 1) Make header-banner expand to fit the nav ─────────────── */
+  .header-banner {
     height: auto !important;
-    padding: 0.5rem 1rem !important;
+    min-height: 120px !important;    /* or whatever your smallest height is */
+    overflow: visible !important;     /* allow the link to show */
+    padding-bottom: 1rem !important;  /* give a little breathing room */
   }
 
-  /* 2) Tame the logo */
+  /* ─── 2) Shrink logo/header elements ──────────────────────────── */
+  header,
+  .site-header {
+    padding: 0.5rem 1rem !important;
+    text-align: center;
+  }
   .site-logo,
   header .logo img {
     max-height: 60px !important;
@@ -1270,28 +1275,29 @@ section h2::after {
     margin-bottom: 0.5rem !important;
   }
 
-  /* 3) Center your nav container */
+  /* ─── 3) Center your nav container ───────────────────────────── */
   #main-nav,
   header nav {
     display: flex !important;
     justify-content: center !important;
+    margin-top: 0.5rem !important;
+    z-index: 2 !important;
   }
 
-  /* 4) Hide every nav link */
+  /* ─── 4) Hide every nav link… ───────────────────────────────── */
   #main-nav a,
   header nav a {
     display: none !important;
   }
 
-  /* 5) Show & center only the “Our DJs” link */
+  /* ─── 5) …then only show & center the “Our DJs” link ────────── */
   #main-nav a[href*="djs"],
   header nav a[href*="djs"] {
     display: inline-block !important;
     margin: 0 auto !important;
-    font-size: 1rem !important;        /* keep your mobile font-size */
-    text-transform: uppercase !important; /* if you want uppercase like desktop */
   }
 }
+
 
 
 
