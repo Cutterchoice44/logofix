@@ -583,3 +583,12 @@ section h2::after {
 #chatPopupBtn {
   display: none !important;
 }
+/* ─── FORCE GIF ANIMATIONS TO RUN ─────────────────────────────────────────── */
+.header-gif-right {
+  animation: slideRightToLeft var(--gif-speed) linear infinite !important;
+  animation-play-state: running !important;
+}
+.header-gif-left {
+  animation: slideLeftToRight var(--gif-speed) linear infinite !important;
+  animation-play-state: running !important;
+}
