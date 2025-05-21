@@ -1269,15 +1269,20 @@ section h2::after {
     display: inline-block !important;
     margin: 0 auto !important;
   }
-  /* ─── MOBILE ONLY: bring back pop-out chat button beneath chat ───────────────── */
+/* ─── MOBILE ONLY: restore chat pop-out button ───────────────────────────────── */
 @media (max-width: 768px) {
-  /* Undo any hiding of the pop-out button */
+  /* 1) Bring back the chat pop-out button */
   #popOutBtn,
-  .chat-actions .popout-btn {
+  .chat .popout-btn {
     display: inline-block !important;
     margin: 0.5rem auto !important;
   }
+
+  /* 2) (Optional) If you have a separate player pop-out you still want hidden, target it explicitly here:
+     #popOutPlayer { display: none !important; }
+  */
 }
+
 
 
 
