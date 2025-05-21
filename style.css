@@ -601,3 +601,21 @@ section h2::after {
   animation: slideLeftToRight var(--gif-speed) linear infinite !important;
   animation-play-state: running !important;
 }
+/* ─── LIVE PLAYER LAYOUT FIXES ──────────────────────────────────────────── */
+/* 1) Restore the original padding around the player panel */
+.live-player {
+  padding: 0.5rem !important;
+}
+
+/* 2) Put the player-container back to 1000px max-width (instead of 600px) */
+.live-player .player-container {
+  max-width: 1000px !important;
+}
+
+/* 3) Force the square “inlinePlayer” iframe to keep a 1:1 aspect ratio */
+.live-player .player-container iframe#inlinePlayer {
+  width: 100%;
+  height: auto !important;
+  aspect-ratio: 1 / 1 !important;
+  max-height: none !important;
+}
