@@ -244,7 +244,7 @@ section h2 {
   overflow-y: auto;
 
   /* Option A: scale all text inside the schedule */
-  font-size: 1.1rem;
+  font-size: 1.2rem;
    line-height: 1.4;      /* optional, to give a bit more breathing room */
 }/* ← change this to e.g. 0.9rem or 1.1rem */
 }
