@@ -665,24 +665,3 @@ section h2::after {
 .live-player audio {
   margin: 0 auto !important;     /* was 0 auto 1rem */
 }
-
-/* ─── MIXCLOUD DELETE LINK STYLES ───────────────────────────────────── */
-.mixcloud-item {
-  /* wrap each iframe + link */
-  position: relative;
-}
-
-.remove-link {
-  display: block;
-  text-align: right;
-  font-size: 0.9rem;
-  color: var(--brand-teal);
-  text-decoration: underline;
-  margin-top: 0.3rem;
-  cursor: pointer;
-}
-
-.remove-link:hover {
-  color: #5A8785;
-  text-decoration: #5A8785;
-}
