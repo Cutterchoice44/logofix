@@ -242,19 +242,16 @@ section h2 {
   padding: 0 1rem 1rem;
   max-height: 2000px;
   overflow-y: auto;
-
-  /* Option A: scale all text inside the schedule */
-  font-size: 1.3rem;
+  font-size: 1.4rem;
    line-height: 1.4;      /* optional, to give a bit more breathing room */
 }/* ← change this to e.g. 0.9rem or 1.1rem */
-}
 
 .schedule-heading {
   position: sticky;
   top: 0;
   background: #111;
   z-index: 10;
-  padding: 0.5rem 0;
+  padding: 0.4rem 0;
   font-size: 1.5rem;
   border-bottom: 1px solid var(--brand-teal);
 }
