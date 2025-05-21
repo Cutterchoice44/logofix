@@ -625,23 +625,44 @@ section h2::after {
   max-height: none !important;
 }
 
+/* ─── MOBILE BANNER + “Our DJs” ONLY ─────────────────────────────────────── */
 @media (max-width: 768px) {
-  /* Hide all nav links & icons by default */
-  #main-nav a {
-    display: none !important;
+  /* 1) Shrink header/banner so it never covers the logo */
+  header {
+    height: auto !important;
+    padding: 0.5rem 1rem !important;
+    overflow: visible !important;
+  }
+  /* 2) Scale down the logo and title text */
+  header .logo,
+  header .logo img {
+    max-height: 80px !important;
+    width: auto !important;
+    margin: 0 auto !important;
+  }
+  header .title h1 {
+    font-size: 1.6rem !important;
+    line-height: 1.2 !important;
+  }
+  header .title .tagline {
+    font-size: 1rem !important;
   }
 
-  /* Show only the second link (Our DJs) */
-  #main-nav a:nth-of-type(2) {
+  /* 3) Hide every nav link/icon... */
+  #main-nav a,
+  #main-nav .social-icon {
+    display: none !important;
+  }
+  /* 4) ...then re-show only the “Our DJs” link by matching its URL */
+  #main-nav a[href*="djs"] {
     display: inline-block !important;
     font-size: 1rem !important;
     margin: 0 !important;
+    padding: 0 !important;
   }
-
-  /* Center that one link */
+  /* 5) Center that lone link */
   #main-nav {
     display: flex !important;
     justify-content: center !important;
   }
 }
-
