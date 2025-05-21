@@ -1300,4 +1300,16 @@ section h2::after {
     margin: 0.5rem auto !important;
   }
 }
- 
+ /* ─── SHOW MOBILE CHAT BUTTON UNDER PLAYER ───────────────────────────────── */
+@media (max-width: 768px) {
+  /* Hide the old player pop-out (if you haven’t already) */
+  #popOutBtn {
+    display: none !important;
+  }
+
+  /* Make sure the Chat button in the player-container shows */
+  #chatPopupBtn {
+    display: inline-block !important;
+    margin: 0.5rem auto !important;
+  }
+}
