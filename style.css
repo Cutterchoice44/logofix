@@ -244,7 +244,7 @@ section h2 {
   overflow-y: auto;
 
   /* Option A: scale all text inside the schedule */
-  font-size: 1.2rem;        /* ← change this to e.g. 0.9rem or 1.1rem */
+  font-size: 1.1rem;        /* ← change this to e.g. 0.9rem or 1.1rem */
 }
 
 .schedule-heading {
@@ -612,7 +612,7 @@ section h2::after {
 
 /* 2) Put the player-container back to 1000px max-width (instead of 600px) */
 .live-player .player-container {
-  max-width: 1000px !important;
+  max-width: 800px !important;
 }
 
 /* 3) Force the square “inlinePlayer” iframe to keep a 1:1 aspect ratio */
