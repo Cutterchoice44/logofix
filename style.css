@@ -1292,24 +1292,12 @@ section h2::after {
     display: flex !important;
     justify-content: center !important;
   }
-  /* ─── RESTORE CHAT BUTTON ON MOBILE ───────────────────────────────────────── */
+/* ─── SHOW CHAT POP-OUT ON MOBILE ───────────────────────────────────────── */
 @media (max-width: 768px) {
-  /* ensure the container is visible */
-  .chat-actions {
-    display: block !important;
-    text-align: center;
-    margin-top: 0.5rem;
-  }
-  /* show the pop-out button again */
-  #popOutBtn {
+  /* Override the “hide” rule in your Chat Modal section */
+  .chat .popout-btn {
     display: inline-block !important;
     margin: 0.5rem auto !important;
   }
 }
-
-
-
-
-
-
-
+ 
