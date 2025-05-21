@@ -279,19 +279,6 @@ async function fetchWeeklySchedule() {
         span.textContent = ev.title;
         wrap.appendChild(span);
 
-        if (!/archive/i.test(ev.title)) {
-          const a = document.createElement("a");
-          a.href = createGoogleCalLink(
-            ev.title,
-            ev.startDateUtc,
-            ev.endDateUtc
-          );
-          a.target = "_blank";
-          a.innerHTML = "📅";
-          a.style.cssText = "font-size:1.4rem;text-decoration:none;margin-left:6px;";
-          wrap.appendChild(a);
-        }
-
         li.appendChild(wrap);
         ul.appendChild(li);
       });
