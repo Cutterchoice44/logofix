@@ -624,6 +624,7 @@ section h2::after {
   aspect-ratio: 1 / 1 !important;
   max-height: none !important;
 }
+
 @media (max-width: 768px) {
   /* Hide all nav links & icons by default */
   #main-nav a {
