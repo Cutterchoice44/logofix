@@ -58,8 +58,26 @@
       font-size: 1.2rem !important;
       vertical-align: middle !important;
     }
+    @media (max-width: 768px) {
+      /* hide left + right columns */
+      #main-nav .nav-left,
+      #main-nav .nav-right {
+        display: none !important;
+      }
+      /* make center column fill & center its link */
+      #main-nav .nav-center {
+        display: block      !important;
+        width: 100%         !important;
+        text-align: center !important;
+      }
+      #main-nav .nav-center a {
+        display: inline-block !important;
+        margin: 0 auto       !important;
+      }
+    }
   </style>
-
+  …
+</head>
   <!-- Other head scripts -->
   <script src="https://cdn.socket.io/4.7.2/socket.io.min.js" defer></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3MSGZZ5QL6"></script>
