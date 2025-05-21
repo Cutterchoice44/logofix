@@ -1270,22 +1270,28 @@ section h2::after {
     margin-bottom: 0.5rem !important;
   }
 
-  /* 3) Center the nav container */
-  #main-nav {
+  /* 3) Center your nav container */
+  #main-nav,
+  header nav {
     display: flex !important;
     justify-content: center !important;
   }
 
-  /* 4) Hide all links… */
-  #main-nav a {
+  /* 4) Hide every nav link */
+  #main-nav a,
+  header nav a {
     display: none !important;
   }
 
-  /* …then show & center only the “Our DJs” link */
-  #main-nav a[href*="djs"] {
+  /* 5) Show & center only the “Our DJs” link */
+  #main-nav a[href*="djs"],
+  header nav a[href*="djs"] {
     display: inline-block !important;
     margin: 0 auto !important;
+    font-size: 1rem !important;        /* keep your mobile font-size */
+    text-transform: uppercase !important; /* if you want uppercase like desktop */
   }
 }
+
 
 
