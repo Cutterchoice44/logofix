@@ -624,3 +624,41 @@ section h2::after {
   aspect-ratio: 1 / 1 !important;
   max-height: none !important;
 }
+/* ─── MOBILE BANNER + NAV TWEAKS ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* 1) Shrink the header/banner so it never covers your logo */
+  header,
+  .site-header,
+  .banner { 
+    height: auto !important;      /* let it size to its contents */
+    padding: 0.5rem 1rem;          /* less top/bottom padding */
+  }
+
+  /* make sure your logo doesn’t overflow */
+  .site-logo,
+  header .logo img {
+    max-height: 60px !important;
+    width: auto !important;
+    margin-bottom: 0.5rem;
+  }
+
+  /* 2) Reduce nav-link font size + spacing */
+  #main-nav a {
+    font-size: 1rem !important;
+    margin: 0 0.3rem !important;
+  }
+
+  /* 3) Hide everything except “Our DJs” */
+  /* assuming “Our DJs” is the 2nd link in your #main-nav */
+  #main-nav a:first-child,           /* History */
+  #main-nav a:nth-child(3),          /* Merch */
+  #main-nav .social-icon {           /* any social icons */
+    display: none !important;
+  }
+
+  /* 4) Center the remaining link */
+  #main-nav {
+    display: flex;
+    justify-content: center;
+  }
+}
