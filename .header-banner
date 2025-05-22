@@ -77,12 +77,32 @@ html, body {
   100% { transform: translateX(100vw); }
 }
 
-header::before {
+.header-banner {
+  position: relative;
+  overflow: hidden;
+  height: var(--gif-height);
+}
+
+.header-banner::before {
   content: "";
   position: absolute;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;            /* above the GIFs */
+  pointer-events: none;
+}
+
+/* make sure your GIFs are behind it */
+.header-banner .header-gif-right,
+.header-banner .header-gif-left {
   z-index: 0;
+}
+
+/* and your logo/title sit on top */
+.header-banner .logo-container,
+.header-banner .title {
+  position: relative;
+  z-index: 2;
 }
 
 header .logo-container,
@@ -655,65 +675,64 @@ html, body {
 }
 
 /* ─── HEADER WITH ANIMATED GIFS ────────────────────────────────────────────── */
+/* ─── HEADER WITH ANIMATED GIFS ────────────────────────────────────────────── */
 .header-banner {
   position: relative;
   height: var(--gif-height);
+  overflow: hidden;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  overflow: hidden;
 }
 
-/* FIRST GIF (RIGHT TO LEFT) */
-.header-gif-right {
+/* First GIF (right→left) */
+.header-banner .header-gif-right {
   position: absolute;
-  top: 0;
-  left: 50%;
-  height: var(--gif-height);
+  top: 0; left: 50%;
   width: var(--gif-width);
+  height: var(--gif-height);
   opacity: var(--gif-opacity);
   z-index: 0;
-  background: url('/images/Untitled%20design(4).gif') no-repeat center center;
-  background-size: cover;
+  background: url('/images/Untitled%20design(4).gif') center/cover no-repeat;
   animation: slideRightToLeft var(--gif-speed) linear infinite;
 }
 
-/* SECOND GIF (LEFT TO RIGHT) */
-.header-gif-left {
+/* Second GIF (left→right) */
+.header-banner .header-gif-left {
   position: absolute;
-  top: 0;
-  right: 50%;
-  height: var(--gif-height);
+  top: 0; right: 50%;
   width: var(--gif-width);
+  height: var(--gif-height);
   opacity: var(--gif-opacity);
   z-index: 0;
-  background: url('/images/Untitled%20design(5).gif') no-repeat center center;
-  background-size: cover;
+  background: url('/images/Untitled%20design(5).gif') center/cover no-repeat;
   animation: slideLeftToRight var(--gif-speed) linear infinite;
 }
 
-/* ─── ANIMATIONS ───────────────────────────────────────────────────────────── */
+/* Dark overlay above the GIFs */
+.header-banner::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Logos & titles on top */
+.header-banner .logo-container,
+.header-banner .title {
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── KEYFRAMES ───────────────────────────────────────────────────────────── */
 @keyframes slideRightToLeft {
-  0%   { transform: translateX(100vw); }
-  100% { transform: translateX(-100vw); }
+  from { transform: translateX(100vw); }
+  to   { transform: translateX(-100vw); }
 }
 @keyframes slideLeftToRight {
-  0%   { transform: translateX(-100vw); }
-  100% { transform: translateX(100vw); }
-}
-
-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 0;
-}
-
-header .logo-container,
-header .title {
-  position: relative;
-  z-index: 1;
+  from { transform: translateX(-100vw); }
+  to   { transform: translateX(100vw); }
 }
 
 header .logo {
@@ -1198,14 +1217,43 @@ section h2::after {
 #chatPopupBtn {
   display: none !important;
 }
-/* ─── FORCE GIF ANIMATIONS TO RUN ─────────────────────────────────────────── */
-.header-gif-right {
-  animation: slideRightToLeft var(--gif-speed) linear infinite !important;
-  animation-play-state: running !important;
+/* ─── FORCE GIF ANIMATIONS TO RUN ─────────────────────────────────────────── */* 1) Make sure your header implements the banner class: */
+header {
+  /* …your existing styles… */
 }
-.header-gif-left {
-  animation: slideLeftToRight var(--gif-speed) linear infinite !important;
-  animation-play-state: running !important;
+header.header-banner {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 2) Dark overlay only on the banner, above the GIFs: */
+.header-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 3) GIFs behind the overlay: */
+.header-banner .header-gif-right,
+.header-banner .header-gif-left {
+  position: absolute;
+  top: 0;
+  height: var(--gif-height);
+  width: var(--gif-width);
+  opacity: var(--gif-opacity);
+  z-index: 0;
+  background-size: cover;
+  /* your existing background-image & animation rules */
+}
+
+/* 4) Logos & titles in front: */
+.header-banner .logo-container,
+.header-banner .title {
+  position: relative;
+  z-index: 2;
 }
 /* ─── LIVE PLAYER LAYOUT FIXES ──────────────────────────────────────────── */
 /* 1) Restore the original padding around the player panel */
