@@ -473,23 +473,15 @@ section h2::after {
   display: inline-block !important;
 }
 
-/* ─── Remove stray chat button in player ─────────────────────────── */
-#chatPopupBtn {
-  display: none !important;
-}
-
+/* ─── MOBILE ONLY: HIDE SECOND POP-OUT BUTTON ───────────────────────── */
 @media only screen and (max-width: 768px) {
-  /* hide the entire button container under the chat iframe */
-  section.chat .chat-actions {
-    display: none !important;
-  }
-  /* in case the button is rendered outside that container */
-  section.chat .popout-btn {
-    display: none !important;
-  }
-@media only screen and (max-width: 768px) {
-  /* hide the chat-section pop-out that sits immediately after the iframe */
+  /* hide the default chat-actions block (immediately after the iframe) */
   .chat iframe + .chat-actions {
+    display: none !important;
+  }
+
+  /* also guard against any stray popout-btn elsewhere in .chat */
+  section.chat .popout-btn {
     display: none !important;
   }
 }
