@@ -491,8 +491,15 @@ section h2::after {
     display: inline-block !important;
     margin: 0.5rem auto !important;
   }
-/* ─── HIDE SECONDARY CHAT BUTTON ON MOBILE ───────────────────────────────── */
+/* ─── MOBILE CHAT BUTTON ADJUSTMENTS ──────────────────────────── */
 @media (max-width: 768px) {
+  /* still show your top pop-out button */
+  .chat-actions .popout-btn {
+    display: inline-block !important;
+    margin: 0.5rem auto !important;
+  }
+
+  /* hide the redundant pop-out button inside the chat section */
   .chat .chat-actions {
     display: none !important;
   }
