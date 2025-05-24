@@ -216,20 +216,13 @@
   <script src="slideshow.js?v=1747907115962" defer></script>
 
   <!-- Remove duplicate “Pop Out Chat” under embedded chat on mobile -->
-  <script>
-    function removeExtraChatButton() {
-      // only on viewports ≤768px
-      if (!window.matchMedia('(max-width: 768px)').matches) return;
-
-      const chatSection = document.querySelector('section.chat');
-      if (!chatSection) return;
-
-      // remove every .chat-actions inside the chat section
-      chatSection.querySelectorAll('.chat-actions').forEach(el => el.remove());
-    }
-
-    document.addEventListener('DOMContentLoaded', removeExtraChatButton);
-    window.addEventListener('resize', removeExtraChatButton);
+ <script>
+    window.addEventListener('load', () => {
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        document.querySelectorAll('section.chat .chat-actions')
+                .forEach(el => el.remove());
+      }
+    });
   </script>
 
   <!-- Chat Modal for Mobile -->
