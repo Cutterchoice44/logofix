@@ -487,4 +487,9 @@ section h2::after {
   section.chat .popout-btn {
     display: none !important;
   }
+@media only screen and (max-width: 768px) {
+  /* hide the chat-section pop-out that sits immediately after the iframe */
+  .chat iframe + .chat-actions {
+    display: none !important;
+  }
 }
