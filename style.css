@@ -479,11 +479,21 @@ section h2::after {
 .admin-mode .remove-link {
   display: inline-block !important;
 }
-
-/* ─── MOBILE ONLY: HIDE SECOND POP-OUT BUTTON ───────────────────────── */
+/* ─── MOBILE LAYOUT & CHAT FIXES ───────────────────────────────── */
 @media only screen and (max-width: 768px) {
-  /* target the chat-actions container directly under the chat section */
-  section.chat > .chat-actions {
+  /* Hide the old player pop-out */
+  #popOutBtn {
+    display: none !important;
+  }
+
+  /* Ensure the primary chat-popout in the player shows */
+  #chatPopupBtn {
+    display: inline-block !important;
+    margin: 0.5rem auto !important;
+  }
+
+  /* Hide the extra “Pop Out Chat” under the embedded chat iframe */
+  section.chat .chat-actions {
     display: none      !important;
     visibility: hidden !important;
     height: 0          !important;
@@ -492,4 +502,12 @@ section h2::after {
     overflow: hidden   !important;
     pointer-events: none !important;
   }
+
+  /* Tweak chat iframe height */
+  .chat iframe {
+    height: 60vh;
+    max-height: 60vh;
+  }
+
+  /* Other mobile tweaks… */
 }
