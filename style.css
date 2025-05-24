@@ -482,10 +482,10 @@ section h2::after {
   display: none !important;
 }
 
-/* ─── MOBILE ONLY: HIDE INNER CHAT SECTION POP-OUT BUTTON ───────────────── */
+/* ─── MOBILE ONLY: HIDE INNER CHAT-SECTION POP-OUT BUTTON ───────────────── */
 @media (max-width: 768px) {
-  /* kills the button under the iframe, but leaves any top-of-page button alone */
-  .chat > .chat-actions > .popout-btn {
+  /* targets the button under the iframe inside <section class="chat"> */
+  section.chat .chat-actions .popout-btn {
     display: none !important;
   }
 }
