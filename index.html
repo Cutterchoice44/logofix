@@ -215,6 +215,23 @@
   <script src="script.js?v=1747907115962" defer></script>
   <script src="slideshow.js?v=1747907115962" defer></script>
 
+  <!-- Remove duplicate “Pop Out Chat” under embedded chat on mobile -->
+  <script>
+    function removeExtraChatButton() {
+      // only on viewports ≤768px
+      if (!window.matchMedia('(max-width: 768px)').matches) return;
+
+      const chatSection = document.querySelector('section.chat');
+      if (!chatSection) return;
+
+      // remove every .chat-actions inside the chat section
+      chatSection.querySelectorAll('.chat-actions').forEach(el => el.remove());
+    }
+
+    document.addEventListener('DOMContentLoaded', removeExtraChatButton);
+    window.addEventListener('resize', removeExtraChatButton);
+  </script>
+
   <!-- Chat Modal for Mobile -->
   <div id="chatModal" style="display:none;">
     <div class="modal-content">
@@ -222,8 +239,8 @@
       <iframe
         id="chatModalIframe"
         title="Cutters Chat Modal"
-        allow="autoplay"
-      ></iframe>
+        allow="autoplay">
+      </iframe>
     </div>
   </div>
 </body>
