@@ -474,10 +474,6 @@ section h2::after {
   color: #5A8785;
   text-decoration: #5A8785;
 }
-/* ─── ADMIN-MODE REMOVE LINK CONTROL ───────────────────────────────────── */
-.admin-mode .remove-link {
-  display: inline-block !important;
-}
 
 /* ─── MOBILE ONLY: hide in-chat pop-out, show player pop-out ───────── */
 @media (max-width: 768px) {
@@ -504,4 +500,23 @@ section h2::after {
   #chatPopupBtn {
     display: none !important;
   }
+}
+/* ─── MIXCLOUD DELETE LINK STYLES ─────────────────────────────────── */
+.mixcloud-item { position: relative; }
+/* hide for everyone by default */
+.remove-link {
+  display: none !important;
+  /* (you can drop the rest of the styling if you like,
+     or leave text-decoration/color so it’s ready to go) */
+  text-align: right;
+  font-size: 0.9rem;
+  color: var(--brand-teal);
+  text-decoration: underline;
+  margin-top: 0.3rem;
+  cursor: pointer;
+}
+
+/* only show when in admin mode */
+.admin-mode .remove-link {
+  display: inline-block !important;
 }
