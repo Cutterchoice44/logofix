@@ -358,10 +358,6 @@ section h2::after {
     height: 60vh;
     max-height: 60vh;
   }
-  .chat-actions .popout-btn {
-    display: inline-block !important;
-    margin: 0.5rem auto !important;
-  }
 
   /* Schedule stays scrollable */
   .schedule {
@@ -484,7 +480,7 @@ section h2::after {
 
 /* ─── MOBILE ONLY: HIDE INNER CHAT-SECTION POP-OUT BUTTON ───────────────── */
 @media (max-width: 768px) {
-  /* targets the button under the iframe inside <section class="chat"> */
+  /* targets the button under the iframe in <section class="chat"> */
   section.chat .chat-actions .popout-btn {
     display: none !important;
   }
