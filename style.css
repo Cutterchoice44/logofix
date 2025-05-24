@@ -476,35 +476,33 @@ section h2::after {
 }
 
 /* ─── ADMIN-MODE REMOVE LINK CONTROL ───────────────────────────────────── */
-/* ─── ADMIN-MODE REMOVE LINK CONTROL ───────────────────────────────────── */
 .admin-mode .remove-link {
   display: inline-block !important;
 }
 
-/* ─── MOBILE LAYOUT & CHAT FIXES ───────────────────────────────── */
-@media only screen and (max-width: 768px) {
-  /* Hide the old player pop-out */
-  #popOutBtn {
+/* ─── MOBILE ONLY: hide in-chat pop-out, show player pop-out ───────── */
+@media (max-width: 768px) {
+  /* hide the duplicate button under the chat iframe */
+  section.chat .chat-actions {
     display: none !important;
   }
 
-  /* Ensure the primary chat-popout in the player shows */
+  /* show your mobile chat button under the player */
   #chatPopupBtn {
     display: inline-block !important;
-    margin: 0.5rem auto !important;
+    margin: 0.5rem auto 1rem !important;
   }
+}
 
-  /* Let the embedded chat fill its container */
-  .chat iframe {
-    height: auto !important;
-    max-height: none !important;
-  }
-} /* ← Close the mobile @media here */
-
-/* ─── DESKTOP ONLY: HIDE EXTRA CHAT-SECTION BUTTON ────────────── */
-@media only screen and (min-width: 769px) {
-  /* This removes that duplicate “Pop Out Chat” under the embedded chat iframe */
+/* ─── DESKTOP ONLY: show in-chat pop-out, hide player pop-out ───────── */
+@media (min-width: 769px) {
+  /* show the built-in chat button under the chat iframe */
   section.chat .chat-actions {
+    display: block !important;
+  }
+
+  /* hide your extra button under the player */
+  #chatPopupBtn {
     display: none !important;
   }
 }
