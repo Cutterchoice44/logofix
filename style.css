@@ -112,12 +112,10 @@ header .title .tagline {
   transform: scale(1.2);
   transform-origin: center;
   display: grid;
-  /* Default slide grid; adjust as needed */
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
 }
 #slideshow > * {
-  /* ensure slides fill container height */
   height: 100%;
 }
 
@@ -320,6 +318,7 @@ section h2::after {
 
 /* ─── MOBILE LAYOUT OVERWRITES ──────────────────────────────────── */
 @media (max-width: 768px) {
+  /* Header adjustments */
   header {
     flex-direction: column;
     align-items: center;
@@ -336,33 +335,50 @@ section h2::after {
   header .title .tagline {
     font-size: 1rem;
   }
+
+  /* Single-column flow */
   .grid-container {
     display: flex;
     flex-direction: column;
     padding: 0 0.5rem;
   }
-  .live-player iframe,
-  .live-player audio {
-    height: 220px;
-    max-height: 40vh;
+
+  /* Remove Mixcloud entirely on mobile */
+  .mixcloud {
+    display: none !important;
   }
+
+  /* Re‐order so that Live → Chat → Schedule */
+  .live-player { order: 1; }
+  .chat        { order: 2; }
+  .schedule    { order: 3; }
+
+  /* Tweak chat iframe */
   .chat iframe {
-    height: 320px;
+    height: 60vh;
     max-height: 60vh;
   }
-  .mixcloud {
-    display: none;
+  .chat-actions .popout-btn {
+    display: inline-block !important;
+    margin: 0.5rem auto !important;
   }
+
+  /* Schedule stays scrollable */
+  .schedule {
+    overflow-y: auto;
+  }
+
+  /* Hide any leftover desktop‐only buttons */
   #popOutBtn,
   header .logo-container:last-of-type {
     display: none;
   }
+
+  /* Chat-modal remains available */
   #chatModal {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
     background: rgba(0,0,0,0.9);
     display: none;
     z-index: 9999;
@@ -370,19 +386,15 @@ section h2::after {
     align-items: center;
   }
   #chatModal .modal-content {
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
   }
   #chatModal iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 4px;
+    width: 100%; height: 100%;
+    border: none; border-radius: 4px;
   }
   #chatModal .close-btn {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 1rem; right: 1rem;
     background: var(--brand-teal);
     color: #fff;
     border: none;
@@ -442,6 +454,8 @@ section h2::after {
   #now-art {
     max-width: 600px;
   }
+}
+
 /* ─── MIXCLOUD DELETE LINK STYLES ─────────────────────────────────────────── */
 .mixcloud-item { position: relative; }
 .remove-link {
@@ -464,8 +478,8 @@ section h2::after {
 }
 .admin-mode .remove-link {
   display: inline-block !important;
-  /* tweak padding/font-size here if needed */
 }
+
 /* ─── Remove stray chat button in player ─────────────────────────── */
 #chatPopupBtn {
   display: none !important;
