@@ -330,13 +330,15 @@ function openChatPopup() {
   const url = `https://app.radiocult.fm/embed/chat/${STATION_ID}?theme=midnight&primaryColor=%235A8785&corners=sharp`;
 
   if (isMobile) {
-    const modal = document.getElementById("chatModal");
-    const iframeEl = document.getElementById("chatModalIframe");
-    if (modal && iframeEl) {
-      iframeEl.src = url; 
+    const modal  = document.getElementById("chatModal");
+    const iframe = document.getElementById("chatModalIframe");
+    if (modal) {
       modal.style.display = "flex";
+      // move focus into the iframe so the chat input comes into view
+      if (iframe) iframe.focus();
     }
   } else {
+    // desktop: same pop-up window behavior as before
     if (chatPopupWindow && !chatPopupWindow.closed) {
       chatPopupWindow.focus();
     } else {
@@ -351,7 +353,9 @@ function openChatPopup() {
 
 function closeChatModal() {
   const modal = document.getElementById("chatModal");
-  if (modal) modal.style.display = "none";
+  if (modal) {
+    modal.style.display = "none";
+  }
 }
 
 
