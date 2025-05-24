@@ -473,10 +473,6 @@ section h2::after {
 }
 
 /* ─── ADMIN-MODE REMOVE LINK CONTROL ───────────────────────────────────── */
-.remove-link {
-  display: none !important;
-}
-/* ─── ADMIN-MODE REMOVE LINK CONTROL ───────────────────────────────────── */
 .admin-mode .remove-link {
   display: inline-block !important;
 }
@@ -486,16 +482,10 @@ section h2::after {
   display: none !important;
 }
 
-/* ─── MOBILE CHAT BUTTON ADJUSTMENTS ──────────────────────────── */
+/* ─── MOBILE ONLY: HIDE INNER CHAT SECTION POP-OUT BUTTON ───────────────── */
 @media (max-width: 768px) {
-  /* ensure your top Pop-Out Chat button remains visible */
-  .chat-actions .popout-btn {
-    display: inline-block !important;
-    margin: 0.5rem auto !important;
-  }
-
-  /* hide the redundant Pop-Out Chat button inside the chat section */
-  .chat > .chat-actions {
+  /* kills the button under the iframe, but leaves any top-of-page button alone */
+  .chat > .chat-actions > .popout-btn {
     display: none !important;
   }
 }
