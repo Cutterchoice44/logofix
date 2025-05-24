@@ -474,7 +474,6 @@ section h2::after {
   color: #5A8785;
   text-decoration: #5A8785;
 }
-
 /* ─── ADMIN-MODE REMOVE LINK CONTROL ───────────────────────────────────── */
 .admin-mode .remove-link {
   display: inline-block !important;
