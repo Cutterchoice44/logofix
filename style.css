@@ -451,6 +451,13 @@ section h2::after {
     max-width: 600px;
   }
 }
+/* ─── DESKTOP ONLY: HIDE THE CHAT-SECTION POP-OUT BUTTON ────────────── */
+@media only screen and (min-width: 769px) {
+  /* this targets the extra pop-out inside the chat section */
+  section.chat .chat-actions {
+    display: none !important;
+  }
+}
 
 /* ─── MIXCLOUD DELETE LINK STYLES ─────────────────────────────────────────── */
 .mixcloud-item { position: relative; }
