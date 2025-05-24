@@ -476,6 +476,7 @@ section h2::after {
 .remove-link {
   display: none !important;
 }
+/* ─── ADMIN-MODE REMOVE LINK CONTROL ───────────────────────────────────── */
 .admin-mode .remove-link {
   display: inline-block !important;
 }
@@ -485,22 +486,16 @@ section h2::after {
   display: none !important;
 }
 
-/* ─── Ensure chat-section button shows on mobile ───────────────── */
-@media (max-width: 768px) {
-  .chat-actions .popout-btn {
-    display: inline-block !important;
-    margin: 0.5rem auto !important;
-  }
 /* ─── MOBILE CHAT BUTTON ADJUSTMENTS ──────────────────────────── */
 @media (max-width: 768px) {
-  /* still show your top pop-out button */
+  /* ensure your top Pop-Out Chat button remains visible */
   .chat-actions .popout-btn {
     display: inline-block !important;
     margin: 0.5rem auto !important;
   }
 
-  /* hide the redundant pop-out button inside the chat section */
-  .chat .chat-actions {
+  /* hide the redundant Pop-Out Chat button inside the chat section */
+  .chat > .chat-actions {
     display: none !important;
   }
 }
