@@ -491,4 +491,9 @@ section h2::after {
     display: inline-block !important;
     margin: 0.5rem auto !important;
   }
+/* ─── HIDE SECONDARY CHAT BUTTON ON MOBILE ───────────────────────────────── */
+@media (max-width: 768px) {
+  .chat .chat-actions {
+    display: none !important;
+  }
 }
