@@ -475,13 +475,7 @@ section h2::after {
 
 /* ─── MOBILE ONLY: HIDE SECOND POP-OUT BUTTON ───────────────────────── */
 @media only screen and (max-width: 768px) {
-  /* hide the default chat-actions block (immediately after the iframe) */
-  .chat iframe + .chat-actions {
-    display: none !important;
-  }
-
-  /* also guard against any stray popout-btn elsewhere in .chat */
-  section.chat .popout-btn {
+  .chat iframe ~ .chat-actions {
     display: none !important;
   }
 }
