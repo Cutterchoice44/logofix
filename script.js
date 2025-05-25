@@ -400,7 +400,14 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchWeeklySchedule();
   fetchNowPlayingArchive();
   loadArchives();
-
+  
+  // ─── REMOVE THE OLD “Pop Out Chat” BUTTON ON MOBILE ──────────────
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    document
+      .querySelectorAll("section.chat .chat-actions")
+      .forEach(el => el.remove());
+  }
+  
   // Poll live and archive info every 30s
   setInterval(fetchLiveNow, 30000);
   setInterval(fetchNowPlayingArchive, 30000);
