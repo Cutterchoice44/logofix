@@ -314,47 +314,32 @@ async function fetchNowPlayingArchive() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 6) ADMIN & UI ACTIONS (with preload & focus fix)
+// 6) ADMIN & UI ACTIONS (simplified for mobile)
 // ─────────────────────────────────────────────────────────────────────────────
-
-// Preload the chatModal iframe on DOM ready so its input is initialized
-document.addEventListener("DOMContentLoaded", () => {
-  const iframe = document.getElementById("chatModalIframe");
-  if (iframe && !iframe.src) {
-    iframe.src =
-      `https://app.radiocult.fm/embed/chat/${STATION_ID}` +
-      `?theme=midnight&primaryColor=%235A8785&corners=sharp`;
-  }
-});
-
 function openChatPopup() {
+  const url =
+    `https://app.radiocult.fm/embed/chat/${STATION_ID}` +
+    `?theme=midnight&primaryColor=%235A8785&corners=sharp`;
+
   if (isMobile) {
-    const modal = document.getElementById("chatModal");
-    const iframe = document.getElementById("chatModalIframe");
-    if (modal) {
-      modal.style.display = "flex";
-      // focus into the iframe so the chat input scrolls into view
-      if (iframe) iframe.focus();
-    }
+    // On mobile: open the embed in a new tab
+    window.open(url, 'CuttersChatMobile', 'noopener');
   } else {
-    const url =
-      `https://app.radiocult.fm/embed/chat/${STATION_ID}` +
-      `?theme=midnight&primaryColor=%235A8785&corners=sharp`;
+    // Desktop: unchanged pop-up window
     if (chatPopupWindow && !chatPopupWindow.closed) {
       chatPopupWindow.focus();
     } else {
       chatPopupWindow = window.open(
         url,
-        "CuttersChatPopup",
-        "width=400,height=700,resizable=yes,scrollbars=yes"
+        'CuttersChatPopup',
+        'width=400,height=700,resizable=yes,scrollbars=yes'
       );
     }
   }
 }
 
 function closeChatModal() {
-  const modal = document.getElementById("chatModal");
-  if (modal) modal.style.display = "none";
+  // no-op now that we’ve removed the modal
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
