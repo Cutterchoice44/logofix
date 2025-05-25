@@ -1,10 +1,15 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // 1) GLOBAL CONFIG & MOBILE DETECTION
 // ─────────────────────────────────────────────────────────────────────────────
-const API_KEY      = "pk_…";
-const STATION_ID   = "cutters-choice-radio";
-const BASE_URL     = "https://api.radiocult.fm/api";
-const isMobile     = /Mobi|Android/i.test(navigator.userAgent);
+const API_KEY           = "pk_…";
+const STATION_ID        = "cutters-choice-radio";
+const BASE_URL          = "https://api.radiocult.fm/api";
+
+// ← add these back in:
+const FALLBACK_ART      = "/images/archives-logo.jpeg";
+const MIXCLOUD_PASSWORD = "cutters44";
+
+const isMobile          = /Mobi|Android/i.test(navigator.userAgent);
 
 let chatPopupWindow;
 let visitorId;
