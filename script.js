@@ -1,18 +1,13 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // 1) GLOBAL CONFIG & MOBILE DETECTION
 // ─────────────────────────────────────────────────────────────────────────────
-const API_KEY           = "pk_0b8abc6f834b444f949f727e88a728e0";
-const STATION_ID        = "cutters-choice-radio";
-const BASE_URL          = "https://api.radiocult.fm/api";
+const API_KEY      = "pk_…";
+const STATION_ID   = "cutters-choice-radio";
+const BASE_URL     = "https://api.radiocult.fm/api";
+const isMobile     = /Mobi|Android/i.test(navigator.userAgent);
 
-// ← updated to your local file
-const FALLBACK_ART      = "/images/archives-logo.jpeg";
-
-const MIXCLOUD_PASSWORD = "cutters44";
-const isMobile          = /Mobi|Android/i.test(navigator.userAgent);
-
-let chatPopupWindow;  
-let visitorId;        
+let chatPopupWindow;
+let visitorId;      
 
 // ADMIN-MODE TOGGLE (show remove links when URL has “#admin”)
 if (window.location.hash === "#admin") {
@@ -324,46 +319,55 @@ async function fetchNowPlayingArchive() {
 
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 6) ADMIN & UI ACTIONS
+// 6) ADMIN & UI ACTIONS (with pre-load & focus fix)
 // ─────────────────────────────────────────────────────────────────────────────
-function openChatPopup() {
-  const url = `https://app.radiocult.fm/embed/chat/${STATION_ID}?theme=midnight&primaryColor=%235A8785&corners=sharp`;
 
+// Preload the chat iframe as soon as the DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  const iframe = document.getElementById('chatModalIframe');
+  if (iframe && !iframe.src) {
+    iframe.src = 
+      `https://app.radiocult.fm/embed/chat/${STATION_ID}` +
+      `?theme=midnight&primaryColor=%235A8785&corners=sharp`;
+  }
+});
+
+function openChatPopup() {
   if (isMobile) {
-    const modal  = document.getElementById("chatModal");
-    const iframe = document.getElementById("chatModalIframe");
+    const modal  = document.getElementById('chatModal');
+    const iframe = document.getElementById('chatModalIframe');
     if (modal) {
-      modal.style.display = "flex";
-      // move focus into the iframe so the chat input comes into view
+      modal.style.display = 'flex';
+      // focus the iframe so the input box scrolls into view
       if (iframe) iframe.focus();
     }
   } else {
-    // desktop: same pop-up window behavior as before
+    const url =
+      `https://app.radiocult.fm/embed/chat/${STATION_ID}` +
+      `?theme=midnight&primaryColor=%235A8785&corners=sharp`;
     if (chatPopupWindow && !chatPopupWindow.closed) {
       chatPopupWindow.focus();
     } else {
       chatPopupWindow = window.open(
         url,
-        "CuttersChatPopup",
-        "width=400,height=700,resizable=yes,scrollbars=yes"
+        'CuttersChatPopup',
+        'width=400,height=700,resizable=yes,scrollbars=yes'
       );
     }
   }
 }
 
 function closeChatModal() {
-  const modal = document.getElementById("chatModal");
-  if (modal) {
-    modal.style.display = "none";
-  }
+  const modal = document.getElementById('chatModal');
+  if (modal) modal.style.display = 'none';
 }
 
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 7) BANNER GIF ROTATION
 // ─────────────────────────────────────────────────────────────────────────────
-const rightEl = document.querySelector(".header-gif-right");
-const leftEl  = document.querySelector(".header-gif-left");
+const rightEl = document.querySelector('.header-gif-right');
+const leftEl  = document.querySelector('.header-gif-left');
 
 if (rightEl && leftEl) {
   const sets = [
