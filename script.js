@@ -7,7 +7,7 @@ const BASE_URL     = "https://api.radiocult.fm/api";
 const isMobile     = /Mobi|Android/i.test(navigator.userAgent);
 
 let chatPopupWindow;
-let visitorId;      
+let visitorId;
 
 // ADMIN-MODE TOGGLE (show remove links when URL has “#admin”)
 if (window.location.hash === "#admin") {
@@ -16,7 +16,6 @@ if (window.location.hash === "#admin") {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 2) BAN LOGIC (FingerprintJS v3+)
-// (remember to include the FingerprintJS <script> in your <head>)
 // ─────────────────────────────────────────────────────────────────────────────
 function blockChat() {
   document.getElementById("popOutBtn")?.remove();
@@ -60,8 +59,7 @@ async function sendBan() {
     console.error("Error sending ban:", err);
   }
 }
-window.sendBan = sendBan;  // expose for console
-
+window.sendBan = sendBan;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 3) HELPERS
@@ -102,7 +100,6 @@ function shuffleIframesDaily() {
   }
   localStorage.setItem("lastShuffleTime", Date.now());
 }
-
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 4) MIXCLOUD ARCHIVES PERSISTENCE
@@ -187,7 +184,6 @@ async function deleteMixcloud(index) {
     alert("Delete failed: " + err.message);
   }
 }
-
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 5) DATA FETCHERS (Live, Schedule, Now-Playing Archive)
@@ -317,16 +313,15 @@ async function fetchNowPlayingArchive() {
   }
 }
 
-
 // ─────────────────────────────────────────────────────────────────────────────
-// 6) ADMIN & UI ACTIONS (with pre-load & focus fix)
+// 6) ADMIN & UI ACTIONS (with preload & focus fix)
 // ─────────────────────────────────────────────────────────────────────────────
 
-// Preload the chat iframe as soon as the DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-  const iframe = document.getElementById('chatModalIframe');
+// Preload the chatModal iframe on DOM ready so its input is initialized
+document.addEventListener("DOMContentLoaded", () => {
+  const iframe = document.getElementById("chatModalIframe");
   if (iframe && !iframe.src) {
-    iframe.src = 
+    iframe.src =
       `https://app.radiocult.fm/embed/chat/${STATION_ID}` +
       `?theme=midnight&primaryColor=%235A8785&corners=sharp`;
   }
@@ -334,11 +329,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function openChatPopup() {
   if (isMobile) {
-    const modal  = document.getElementById('chatModal');
-    const iframe = document.getElementById('chatModalIframe');
+    const modal = document.getElementById("chatModal");
+    const iframe = document.getElementById("chatModalIframe");
     if (modal) {
-      modal.style.display = 'flex';
-      // focus the iframe so the input box scrolls into view
+      modal.style.display = "flex";
+      // focus into the iframe so the chat input scrolls into view
       if (iframe) iframe.focus();
     }
   } else {
@@ -350,52 +345,52 @@ function openChatPopup() {
     } else {
       chatPopupWindow = window.open(
         url,
-        'CuttersChatPopup',
-        'width=400,height=700,resizable=yes,scrollbars=yes'
+        "CuttersChatPopup",
+        "width=400,height=700,resizable=yes,scrollbars=yes"
       );
     }
   }
 }
 
 function closeChatModal() {
-  const modal = document.getElementById('chatModal');
-  if (modal) modal.style.display = 'none';
+  const modal = document.getElementById("chatModal");
+  if (modal) modal.style.display = "none";
 }
-
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 7) BANNER GIF ROTATION
 // ─────────────────────────────────────────────────────────────────────────────
-const rightEl = document.querySelector('.header-gif-right');
-const leftEl  = document.querySelector('.header-gif-left');
+const rightEl = document.querySelector(".header-gif-right");
+const leftEl = document.querySelector(".header-gif-left");
 
 if (rightEl && leftEl) {
   const sets = [
     {
       right: "/images/Untitled design(4).gif",
-      left:  "/images/Untitled design(5).gif"
+      left: "/images/Untitled design(5).gif",
     },
     {
       right: "/images/Untitled design(7).gif",
-      left:  "/images/Untitled design(8).gif"
-    }
+      left: "/images/Untitled design(8).gif",
+    },
   ];
 
   let current = 0,
-      sweepCount = 0;
+    sweepCount = 0;
 
   function applySet(i) {
     rightEl.style.backgroundImage = `url('${sets[i].right}')`;
-    leftEl.style.backgroundImage  = `url('${sets[i].left}')`;
+    leftEl.style.backgroundImage = `url('${sets[i].left}')`;
   }
 
   applySet(0);
 
-  const speedSec = parseFloat(
-    getComputedStyle(document.documentElement)
-      .getPropertyValue("--gif-speed")
-      .replace("s", "")
-  ) || 12;
+  const speedSec =
+    parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue(
+        "--gif-speed"
+      ).replace("s", "")
+    ) || 12;
 
   setInterval(() => {
     sweepCount++;
@@ -406,7 +401,6 @@ if (rightEl && leftEl) {
     }
   }, speedSec * 1000);
 }
-
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 8) INITIALIZATION
@@ -456,7 +450,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const ul = document.querySelector(".rc-user-list");
   if (ul) {
     new MutationObserver(() => {
-      ul.querySelectorAll("li").forEach(li => {
+      ul.querySelectorAll("li").forEach((li) => {
         if (!li.textContent.trim()) li.remove();
       });
     }).observe(ul, { childList: true });
