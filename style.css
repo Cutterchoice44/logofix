@@ -325,8 +325,8 @@ section h2::after {
     text-align: center;
   }
   header .logo {
-    max-width: 120px;
-    margin-bottom: 0.5rem;
+    max-width: 160px;
+    margin-bottom: 1.5rem;
   }
   header .title h1 {
     font-size: 1.8rem;
