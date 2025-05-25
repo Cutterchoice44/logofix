@@ -216,7 +216,7 @@
   <script src="slideshow.js?v=1747907115962" defer></script>
 
   <!-- Remove duplicate “Pop Out Chat” under embedded chat on mobile -->
- <script>
+  <script>
     window.addEventListener('load', () => {
       if (window.matchMedia('(max-width: 768px)').matches) {
         document.querySelectorAll('section.chat .chat-actions')
@@ -224,19 +224,5 @@
       }
     });
   </script>
-
-  <!-- Your scripts -->
-  <script src="script.js?v=1747907115962" defer></script>
-  <script src="slideshow.js?v=1747907115962" defer></script>
-
-  <!-- Remove duplicate “Pop Out Chat” under embedded chat on mobile -->
- <script>
-    window.addEventListener('load', () => {
-      if (window.matchMedia('(max-width: 768px)').matches) {
-        document.querySelectorAll('section.chat .chat-actions')
-                .forEach(el => el.remove());
-      }
-    });
-
 </body>
 </html>
