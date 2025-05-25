@@ -520,3 +520,10 @@ section h2::after {
 .admin-mode .remove-link {
   display: inline-block !important;
 }
+
+  /* ─── TAME THE LOGO HEIGHT ON MOBILE ───────────────────────────────── */
+  header .logo {
+    max-width: 120px !important;   /* shrink width */
+    height: auto      !important;   /* preserve aspect ratio */
+    margin-bottom: 1rem !important; /* give it some breathing room */
+  }
