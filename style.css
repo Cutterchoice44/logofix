@@ -36,31 +36,52 @@ html, body {
   overflow: hidden;
 }
 
+/* ─── HEADER WITH ANIMATED GIFS ─────────────────────────────────────── */
+.header-banner {
+  position: relative;
+  height: var(--gif-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Dark tint overlay */
+.header-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 2;
+}
+
 /* Animated GIF layers */
-.header-gif-right,
-.header-gif-left {
+.header-banner .header-gif-right,
+.header-banner .header-gif-left {
   position: absolute;
   top: 0;
   height: var(--gif-height);
   width: var(--gif-width);
   opacity: var(--gif-opacity);
   background-size: cover;
-  z-index: -1;                    /* push GIFs behind the overlay */
   animation-duration: var(--gif-speed);
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-play-state: running;
+  z-index: 1;
 }
 
-.header-gif-right {
+/* Right-to-left GIF */
+.header-banner .header-gif-right {
   left: 50%;
-  background: url('/images/Untitled%20design(4).gif') no-repeat center;
+  background: url('/images/Untitled%20design(4).gif') center/cover no-repeat;
   animation-name: slideRightToLeft;
 }
 
-.header-gif-left {
+/* Left-to-right GIF */
+.header-banner .header-gif-left {
   right: 50%;
-  background: url('/images/Untitled%20design(5).gif') no-repeat center;
+  background: url('/images/Untitled%20design(5).gif') center/cover no-repeat;
   animation-name: slideLeftToRight;
 }
 
@@ -74,38 +95,29 @@ html, body {
   to   { transform: translateX(100vw); }
 }
 
-/* Dark tint overlay */
-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0,0,0,0.4);
-  z-index: 0;                     /* above GIFs, below text */
-}
-
-/* Logos and titles on top of everything */
-header .logo-container,
-header .title {
+/* Logos & titles on top */
+.header-banner .logo-container,
+.header-banner .title {
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 
-header .logo {
+.header-banner .logo {
   height: 180px;
   margin: 0 0 0.3rem 0.7rem;
 }
 
-header .title {
+.header-banner .title {
   flex: 1 1 auto;
   text-align: center;
 }
 
-header .title h1 {
+.header-banner .title h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 2rem;
 }
 
-header .title .tagline {
+.header-banner .title .tagline {
   font-size: 1.2rem;
   color: var(--brand-teal);
 }
