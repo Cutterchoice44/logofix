@@ -26,7 +26,7 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ─── HEADER WITH ANIMATED GIFS ─────────────────────────────────────── */
+/* ─── HEADER WITH ANIMATED GIFS ────────────────────────────────────────────── */
 .header-banner {
   position: relative;
   height: var(--gif-height);
@@ -35,65 +35,80 @@ html, body {
   align-items: center;
   overflow: hidden;
 }
-.header-gif-right,
-.header-gif-left {
+
+/* FIRST GIF (RIGHT TO LEFT) */
+.header-gif-right {
   position: absolute;
   top: 0;
+  left: 50%;
   height: var(--gif-height);
   width: var(--gif-width);
   opacity: var(--gif-opacity);
   z-index: 0;
+  background: url('/images/Untitled%20design(4).gif') no-repeat center center;
   background-size: cover;
-  animation-duration: var(--gif-speed);
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-play-state: running;
+  animation: slideRightToLeft var(--gif-speed) linear infinite;
 }
-.header-gif-right {
-  left: 50%;
-  background: url('/images/Untitled%20design(4).gif') no-repeat center;
-  animation-name: slideRightToLeft;
-}
+
+/* SECOND GIF (LEFT TO RIGHT) */
 .header-gif-left {
+  position: absolute;
+  top: 0;
   right: 50%;
-  background: url('/images/Untitled%20design(5).gif') no-repeat center;
-  animation-name: slideLeftToRight;
+  height: var(--gif-height);
+  width: var(--gif-width);
+  opacity: var(--gif-opacity);
+  z-index: 0;
+  background: url('/images/Untitled%20design(5).gif') no-repeat center center;
+  background-size: cover;
+  animation: slideLeftToRight var(--gif-speed) linear infinite;
 }
+
+/* ─── ANIMATIONS ───────────────────────────────────────────────────────────── */
 @keyframes slideRightToLeft {
-  from { transform: translateX(100vw); }
-  to   { transform: translateX(-100vw); }
+  0%   { transform: translateX(100vw); }
+  100% { transform: translateX(-100vw); }
 }
 @keyframes slideLeftToRight {
-  from { transform: translateX(-100vw); }
-  to   { transform: translateX(100vw); }
+  0%   { transform: translateX(-100vw); }
+  100% { transform: translateX(100vw); }
 }
+
 header::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
+
 header .logo-container,
 header .title {
   position: relative;
   z-index: 1;
 }
+
 header .logo {
   height: 180px;
-  margin: 0 0 0.3rem 0.7rem;
+  margin-bottom: 0.3rem;
+  margin-left: 0.7rem; 
 }
+
 header .title {
   flex: 1 1 auto;
   text-align: center;
 }
+
 header .title h1 {
-  font-family: 'Bebas Neue', sans-serif;
   font-size: 2rem;
+  margin: 0;
+  font-family: 'Bebas Neue', sans-serif;
 }
+
 header .title .tagline {
   font-size: 1.2rem;
   color: var(--brand-teal);
+  margin-top: 0;
 }
 
 /* ─── GRID LAYOUT ─────────────────────────────────────────────────── */
