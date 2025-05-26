@@ -542,7 +542,7 @@ section h2::after {
     /* smaller height for mobile */
     height: 100px !important;
     max-width: 100px !important;
-    margin-bottom: 0.5rem !important;
+    margin-bottom: 1.5rem !important;
     width: auto !important;
   }
 }
