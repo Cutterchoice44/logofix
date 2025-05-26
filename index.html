@@ -10,7 +10,7 @@
   <title>Cutters Choice Radio</title>
   
   <!-- Main stylesheet (bump v= to bust cache) -->
-<link rel="stylesheet" href="style.css?v=67891">
+  <link rel="stylesheet" href="style.css?v=67891">
 
   <!-- Bebas Neue & FontAwesome -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -76,8 +76,7 @@
       }
     }
   </style>
-  …
-</head>
+
   <!-- Other head scripts -->
   <script src="https://cdn.socket.io/4.7.2/socket.io.min.js" defer></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3MSGZZ5QL6"></script>
@@ -186,12 +185,12 @@
     </section>
 
     <!-- SCHEDULE SECTION -->
- <section class="schedule">
-  <h2 class="schedule-heading">This Week’s Lineup</h2>
-  <div class="schedule-scroll" id="schedule-container">
-    <p>Loading this week’s schedule…</p>
-  </div>
-</section>
+    <section class="schedule">
+      <h2 class="schedule-heading">This Week’s Lineup</h2>
+      <div class="schedule-scroll" id="schedule-container">
+        <p>Loading this week’s schedule…</p>
+      </div>
+    </section>
 
     <!-- MIXCLOUD ARCHIVE SECTION -->
     <section class="mixcloud">
@@ -208,12 +207,41 @@
     </section>
   </div> <!-- end grid-container -->
 
-<!-- ─── FOOTER ─────────────────────────────────────────────────────────── -->
-<footer class="banner"></footer>
+  <!-- ─── FOOTER ─────────────────────────────────────────────────────────── -->
+  <footer class="banner"></footer>
 
-<!-- Your scripts -->
-<script src="script.js?v=1747907115962" defer></script>
-<script src="slideshow.js?v=1747907115962" defer></script>
+  <!-- Your scripts -->
+  <script src="script.js?v=1747907115962" defer></script>
+  <script src="slideshow.js?v=1747907115962" defer></script>
+
+  <!-- GIF‐SWAP SCRIPT: alternates GIF sets every 2 animation loops -->
+  <script>
+    (function(){
+      const right = document.querySelector('.header-gif-right');
+      const left  = document.querySelector('.header-gif-left');
+      let loopCount = 0;
+      const set1 = [
+        "url('/images/Untitled%20design(4).gif')",
+        "url('/images/Untitled%20design(5).gif')"
+      ];
+      const set2 = [
+        "url('/images/Untitled%20design(7).gif')",
+        "url('/images/Untitled%20design(8).gif')"
+      ];
+      // initialize with first pair
+      let currentSet = set1;
+      right.style.backgroundImage = currentSet[0];
+      left.style.backgroundImage  = currentSet[1];
+      // after each full right‐gif pass, count loops and swap every 2
+      right.addEventListener('animationiteration', () => {
+        loopCount++;
+        if (loopCount % 2 === 0) {
+          currentSet = (currentSet === set1) ? set2 : set1;
+          right.style.backgroundImage = currentSet[0];
+          left.style.backgroundImage  = currentSet[1];
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
-
