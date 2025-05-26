@@ -35,6 +35,8 @@ html, body {
   align-items: center;
   overflow: hidden;
 }
+
+/* Animated GIF layers */
 .header-gif-right,
 .header-gif-left {
   position: absolute;
@@ -42,23 +44,27 @@ html, body {
   height: var(--gif-height);
   width: var(--gif-width);
   opacity: var(--gif-opacity);
-  z-index: 0;
   background-size: cover;
+  z-index: -1;                    /* push GIFs behind the overlay */
   animation-duration: var(--gif-speed);
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-play-state: running;
 }
+
 .header-gif-right {
   left: 50%;
   background: url('/images/Untitled%20design(4).gif') no-repeat center;
   animation-name: slideRightToLeft;
 }
+
 .header-gif-left {
   right: 50%;
   background: url('/images/Untitled%20design(5).gif') no-repeat center;
   animation-name: slideLeftToRight;
 }
+
+/* Slide animations */
 @keyframes slideRightToLeft {
   from { transform: translateX(100vw); }
   to   { transform: translateX(-100vw); }
@@ -67,30 +73,38 @@ html, body {
   from { transform: translateX(-100vw); }
   to   { transform: translateX(100vw); }
 }
+
+/* Dark tint overlay */
 header::before {
   content: "";
   position: absolute;
   inset: 0;
   background-color: rgba(0,0,0,0.4);
-  z-index: 0;
+  z-index: 0;                     /* above GIFs, below text */
 }
+
+/* Logos and titles on top of everything */
 header .logo-container,
 header .title {
   position: relative;
   z-index: 1;
 }
+
 header .logo {
   height: 180px;
   margin: 0 0 0.3rem 0.7rem;
 }
+
 header .title {
   flex: 1 1 auto;
   text-align: center;
 }
+
 header .title h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 2rem;
 }
+
 header .title .tagline {
   font-size: 1.2rem;
   color: var(--brand-teal);
